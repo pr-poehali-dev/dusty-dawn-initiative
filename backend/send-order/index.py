@@ -62,9 +62,17 @@ def handler(event: dict, context) -> dict:
 
     msg.attach(MIMEText(html, 'html'))
 
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
-        server.login(gmail_user, gmail_password)
-        server.sendmail(gmail_user, gmail_user, msg.as_string())
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+            server.login(gmail_user, gmail_password)
+            server.sendmail(gmail_user, gmail_user, msg.as_string())
+    except Exception as e:
+        print(f"SMTP ERROR: {e}")
+        return {
+            'statusCode': 500,
+            'headers': {'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({'error': str(e)})
+        }
 
     return {
         'statusCode': 200,

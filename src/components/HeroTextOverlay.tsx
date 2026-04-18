@@ -10,12 +10,12 @@ export default function HeroTextOverlay() {
           paintOrder: "stroke fill",
         }}
       >
-        МАКС
+        ОБМЕН
       </h1>
       <p className="text-foreground font-mono text-sm md:text-base max-w-xs tracking-widest lg:text-base">
-        Ваш надежный гид
+        Доллар · Евро · Биткоин
         <br />
-        в мире баз данных
+        Быстро и выгодно
       </p>
     </div>
   )

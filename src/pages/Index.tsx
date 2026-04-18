@@ -1,17 +1,21 @@
+import { useState } from "react"
 import SplineScene from "@/components/SplineScene"
 import Header from "@/components/Header"
 import RotatingTextAccent from "@/components/RotatingTextAccent"
 import Footer from "@/components/Footer"
 import HeroTextOverlay from "@/components/HeroTextOverlay"
+import OrderModal from "@/components/OrderModal"
 
 const CDN_BASE = "https://cdn.poehali.dev/templates/meet-jack"
 
 const Index = () => {
+  const [modalOpen, setModalOpen] = useState(false)
+
   return (
     <div className="w-full min-h-screen py-0 bg-background">
       <div className="max-w-[1200px] mx-auto">
         <main className="w-full relative h-[600px]">
-          <Header />
+          <Header onOrder={() => setModalOpen(true)} />
           <SplineScene />
           <HeroTextOverlay />
           <RotatingTextAccent />
@@ -80,7 +84,8 @@ const Index = () => {
           </div>
         </section>
       </div>
-      <Footer />
+      <Footer onOrder={() => setModalOpen(true)} />
+      <OrderModal open={modalOpen} onOpenChange={setModalOpen} />
     </div>
   )
 }

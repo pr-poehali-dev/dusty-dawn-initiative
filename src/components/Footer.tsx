@@ -1,6 +1,10 @@
 const CDN_BASE = "https://cdn.poehali.dev/templates/meet-jack"
 
-export default function Footer() {
+interface FooterProps {
+  onOrder: () => void
+}
+
+export default function Footer({ onOrder }: FooterProps) {
   return (
     <footer className="w-full px-6 relative py-[0] mt-28 h-auto mb-0 bg-card">
       <div className="absolute top-8 right-6 text-accent text-2xl">+</div>
@@ -62,23 +66,24 @@ export default function Footer() {
             <p className="text-foreground font-mono font-normal text-base">USD · EUR · BTC — быстро и выгодно</p>
           </div>
 
-          <a href="mailto:hello@example.com">
-            <button className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold text-lg whitespace-nowrap hover:scale-105 hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)] transition-all duration-300 font-mono flex items-center gap-2">
-              Начать обмен
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M7 7h10v10M7 17L17 7" />
-              </svg>
-            </button>
-          </a>
+          <button
+            onClick={onOrder}
+            className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold text-lg whitespace-nowrap hover:scale-105 hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)] transition-all duration-300 font-mono flex items-center gap-2"
+          >
+            Начать обмен
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M7 7h10v10M7 17L17 7" />
+            </svg>
+          </button>
         </div>
 
         <div className="w-full px-6 py-4 border-t border-border flex md:flex-row items-center justify-between gap-2 flex-row">

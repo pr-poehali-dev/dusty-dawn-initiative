@@ -3,7 +3,11 @@ import { ArrowUpRight } from "lucide-react"
 
 const CDN_BASE = "https://cdn.poehali.dev/templates/meet-jack"
 
-export default function Header() {
+interface HeaderProps {
+  onOrder: () => void
+}
+
+export default function Header({ onOrder }: HeaderProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/0 backdrop-blur-sm">
       <div className="flex items-center justify-between px-6 py-4 text-transparent">
@@ -12,14 +16,13 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-          <a href="#contact">
-            <Button
-              className="bg-primary text-primary-foreground rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]"
-              style={{ paddingLeft: "24px", paddingRight: "16px" }}
-            >
-              Обменять <ArrowUpRight className="ml-1 h-4 w-4" />
-            </Button>
-          </a>
+          <Button
+            onClick={onOrder}
+            className="bg-primary text-primary-foreground rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]"
+            style={{ paddingLeft: "24px", paddingRight: "16px" }}
+          >
+            Обменять <ArrowUpRight className="ml-1 h-4 w-4" />
+          </Button>
         </div>
       </div>
     </header>
